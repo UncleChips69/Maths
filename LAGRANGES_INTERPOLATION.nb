@@ -1,0 +1,166 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5027,        158]
+NotebookOptionsPosition[      4329,        137]
+NotebookOutlinePosition[      4729,        153]
+CellTagsIndexPosition[      4686,        150]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["LAGRANGES INTERPOLATION", "Item",
+ CellChangeTimes->{{3.892425581855118*^9, 
+  3.8924255965931807`*^9}},ExpressionUUID->"8519fe8c-33eb-42f6-8a1a-\
+faaf76f4ea8d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"y", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3", ",", "10", ",", "11"}], "}"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "5", ",", "10", ",", "20", ",", "3"}], "}"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"n", "=", 
+   RowBox[{"Length", "[", "y", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"n", "=", 
+   RowBox[{"Length", "[", "f", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"i", "=", "1"}], ";"}], "\n", 
+ RowBox[{"While", "[", 
+  RowBox[{
+   RowBox[{"i", "\[LessEqual]", "n"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"L", "[", 
+      RowBox[{"i", ",", "x_"}], "]"}], "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        UnderoverscriptBox["\[Product]", 
+         RowBox[{"j", "=", "1"}], 
+         RowBox[{"1", "-", "i"}]], 
+        FractionBox[
+         RowBox[{"x", "-", 
+          RowBox[{"y", "[", 
+           RowBox[{"[", "j", "]"}], "]"}]}], 
+         RowBox[{
+          RowBox[{"y", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "-", 
+          RowBox[{"y", "[", 
+           RowBox[{"[", "j", "]"}], "]"}]}]]}], ")"}], 
+      RowBox[{"(", 
+       RowBox[{
+        UnderoverscriptBox["\[Product]", 
+         RowBox[{"j", "=", 
+          RowBox[{"i", "+", "1"}]}], "n"], 
+        FractionBox[
+         RowBox[{"x", "-", 
+          RowBox[{"y", "[", 
+           RowBox[{"[", "j", "]"}], "]"}]}], 
+         RowBox[{
+          RowBox[{"y", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "-", 
+          RowBox[{"y", "[", 
+           RowBox[{"[", "j", "]"}], "]"}]}]]}], ")"}]}]}], ";", 
+    RowBox[{"i", "++"}]}]}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Lagrange", "[", "x_", "]"}], "=", 
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", 
+     RowBox[{"k", "=", "1"}], "n"], 
+    RowBox[{
+     RowBox[{"L", "[", 
+      RowBox[{"k", ",", "x"}], "]"}], "*", 
+     RowBox[{"f", "[", 
+      RowBox[{"[", "k", "]"}], "]"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"g", "=", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{"N", "[", 
+    RowBox[{"Lagrange", "[", "x", "]"}], "]"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Simplified Lagrange Interpolating Polynomial\>\"", "g"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.8924256087348576`*^9, 3.892425959511092*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"44f37ce8-d958-44ec-a669-133839ef853e"],
+
+Cell[BoxData[
+ RowBox[{"272.8928571428571`", "\[VeryThinSpace]", "-", 
+  RowBox[{"43.275000000000006`", " ", "x"}], "+", 
+  RowBox[{"4.3007936507936515`", " ", 
+   SuperscriptBox["x", "2"]}], "-", 
+  RowBox[{"0.35833333333333345`", " ", 
+   SuperscriptBox["x", "3"]}], "+", 
+  RowBox[{"0.011111111111111112`", " ", 
+   SuperscriptBox["x", "4"]}]}]], "Output",
+ CellChangeTimes->{3.892425962119859*^9},
+ CellLabel->"Out[13]=",ExpressionUUID->"e805cec1-036a-4ed4-9575-31fbc4dc6cf4"],
+
+Cell[BoxData[
+ RowBox[{"\<\"Simplified Lagrange Interpolating Polynomial\"\>", " ", 
+  RowBox[{"(", 
+   RowBox[{"272.8928571428571`", "\[VeryThinSpace]", "-", 
+    RowBox[{"43.275000000000006`", " ", "x"}], "+", 
+    RowBox[{"4.3007936507936515`", " ", 
+     SuperscriptBox["x", "2"]}], "-", 
+    RowBox[{"0.35833333333333345`", " ", 
+     SuperscriptBox["x", "3"]}], "+", 
+    RowBox[{"0.011111111111111112`", " ", 
+     SuperscriptBox["x", "4"]}]}], ")"}]}]], "Print",
+ CellChangeTimes->{3.892425962182345*^9},
+ CellLabel->
+  "During evaluation of \
+In[6]:=",ExpressionUUID->"2847f115-3343-46e3-b513-e8dcd5e4ad4e"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{765, 741},
+WindowMargins->{{-6, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.2 for Microsoft Windows (64-bit) (January 30, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"633cd603-57ca-4ff0-b0b4-0ffdaa6fde06"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 167, 3, 32, "Item",ExpressionUUID->"8519fe8c-33eb-42f6-8a1a-faaf76f4ea8d"],
+Cell[CellGroupData[{
+Cell[772, 29, 2427, 76, 276, "Input",ExpressionUUID->"44f37ce8-d958-44ec-a669-133839ef853e"],
+Cell[3202, 107, 480, 10, 32, "Output",ExpressionUUID->"e805cec1-036a-4ed4-9575-31fbc4dc6cf4"],
+Cell[3685, 119, 616, 14, 43, "Print",ExpressionUUID->"2847f115-3343-46e3-b513-e8dcd5e4ad4e"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

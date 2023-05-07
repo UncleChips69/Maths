@@ -1,0 +1,705 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     25655,        697]
+NotebookOptionsPosition[     21252,        625]
+NotebookOutlinePosition[     21660,        641]
+CellTagsIndexPosition[     21617,        638]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["", "Item",
+ CellDingbat->None,
+ CellChangeTimes->{{3.8924268987553988`*^9, 3.892426899567686*^9}},
+ FontWeight->Bold,
+ FontSlant->Italic,ExpressionUUID->"1204a7bb-e413-40e3-ac94-d950542dbc45"],
+
+Cell["Euler Method", "Item",
+ CellDingbat->None,
+ TextAlignment->Center,
+ TextJustification->0,
+ FontSize->24,
+ FontWeight->Bold,
+ FontSlant->Italic,
+ FontVariations->{
+ "Underline"->True},ExpressionUUID->"68f1d8e7-5a61-4c2c-9c54-1421e1be30a1"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+QUESTION 1 : Solve the Initial value problem dy/dx = x + y , y (0) = 1.0, on \
+(0, 1) using Euler Method.\
+\>", "Item",
+ FontWeight->Plain,ExpressionUUID->"d9b0b4a4-451f-4544-b02f-ce4d6ab3fa8c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ExactSol", " ", "=", " ", 
+  RowBox[{"DSolve", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"u", "'"}], "[", "t", "]"}], " ", "==", " ", 
+       RowBox[{"t", " ", "+", " ", 
+        RowBox[{"u", "[", "t", "]"}]}]}], ",", " ", 
+      RowBox[{
+       RowBox[{"u", "[", "0", "]"}], " ", "==", " ", "1.0"}]}], "}"}], ",", 
+    " ", 
+    RowBox[{"u", "[", "t", "]"}], ",", " ", "t"}], "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{"f", "[", 
+   RowBox[{"x_", ",", " ", "y_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"x", " ", "+", " ", "y"}]}], "\n", 
+ RowBox[{
+  RowBox[{"n", " ", "=", " ", "10"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"a", " ", "=", " ", "0.0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"b", " ", "=", " ", "1.0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"h", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"b", " ", "-", " ", "a"}], ")"}], " ", "/", " ", "n"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"y", "[", "0", "]"}], " ", "=", " ", "1.0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Int", " ", "=", " ", 
+   RowBox[{"y", "[", "0", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", " ", "=", " ", "0"}], ",", " ", 
+    RowBox[{"i", " ", "\[LessEqual]", " ", 
+     RowBox[{"n", " ", "-", " ", "1"}]}], ",", " ", 
+    RowBox[{"i", "++"}], ",", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"x", "[", "i", "]"}], " ", "=", " ", 
+      RowBox[{"a", " ", "+", " ", 
+       RowBox[{"i", " ", "*", " ", "h"}]}]}], ";", "\n", 
+     RowBox[{
+      RowBox[{"y", "[", "i", "]"}], " ", "=", " ", "Int"}], ";", "\n", 
+     RowBox[{
+      RowBox[{"y", "[", 
+       RowBox[{"i", " ", "+", " ", "1"}], "]"}], " ", "=", " ", 
+      RowBox[{
+       RowBox[{"y", "[", "i", "]"}], " ", "+", " ", 
+       RowBox[{"h", " ", "*", " ", 
+        RowBox[{"f", "[", 
+         RowBox[{
+          RowBox[{"x", "[", "i", "]"}], ",", " ", 
+          RowBox[{"y", "[", "i", "]"}]}], "]"}]}]}]}], ";", "\n", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<The \>\"", ",", " ", 
+       RowBox[{"i", " ", "+", " ", "1"}], ",", " ", 
+       "\"\< Approx. value is \>\"", ",", " ", 
+       RowBox[{"y", "[", 
+        RowBox[{"i", " ", "+", " ", "1"}], "]"}]}], "]"}], ";", "\n", 
+     RowBox[{"Int", " ", "=", " ", 
+      RowBox[{"y", "[", 
+       RowBox[{"i", " ", "+", " ", "1"}], "]"}]}]}]}], "]"}], ";"}]}], "Input",
+ CellFrame->1,
+ FontFamily->"Consolas",
+ Background->RGBColor[
+  0.9450980392156862, 0.8941176470588236, 0.8784313725490196, 
+   1],ExpressionUUID->"d58a0cfa-6075-4e29-acbd-9ce01ab291f8"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"u", "[", "t", "]"}], "\[Rule]", 
+    RowBox[{"2.`", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "0.5`"}], "+", 
+       RowBox[{"1.`", " ", 
+        SuperscriptBox["\[ExponentialE]", "t"]}], "-", 
+       RowBox[{"0.5`", " ", "t"}]}], ")"}]}]}], "}"}], "}"}]], "Output",
+ CellLabel->"Out[1]= ",ExpressionUUID->"707c51e3-7fec-4d68-b381-2eb53207de52"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "1.1`"}],
+  SequenceForm["The ", 1, " Approx. value is ", 1.1],
+  Editable->False]], "Print",ExpressionUUID->"d0e020ca-9568-4701-b9e7-\
+b858d2295985"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "1.2200000000000002`"}],
+  SequenceForm["The ", 2, " Approx. value is ", 1.2200000000000002`],
+  Editable->False]], "Print",ExpressionUUID->"06ff9350-b67b-4ace-95b8-\
+10344e302c87"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "1.362`"}],
+  SequenceForm["The ", 3, " Approx. value is ", 1.362],
+  Editable->False]], "Print",ExpressionUUID->"98f51a43-cabc-4f45-86fc-\
+e1a1bc5f7a3a"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "1.5282`"}],
+  SequenceForm["The ", 4, " Approx. value is ", 1.5282],
+  Editable->False]], "Print",ExpressionUUID->"74fb7d9c-e277-42d5-87b0-\
+282360eb71f3"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "1.72102`"}],
+  SequenceForm["The ", 5, " Approx. value is ", 1.72102],
+  Editable->False]], "Print",ExpressionUUID->"6bb5a4f8-673c-4537-81b7-\
+0df213af1c62"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "1.943122`"}],
+  SequenceForm["The ", 6, " Approx. value is ", 1.943122],
+  Editable->False]], "Print",ExpressionUUID->"d25a2c9a-5052-4acb-989b-\
+fedc2282a197"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "7", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "2.1974342`"}],
+  SequenceForm["The ", 7, " Approx. value is ", 2.1974342],
+  Editable->False]], "Print",ExpressionUUID->"01d843b5-d105-455e-b4fa-\
+6d61e9c16f26"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "8", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "2.48717762`"}],
+  SequenceForm["The ", 8, " Approx. value is ", 2.48717762],
+  Editable->False]], "Print",ExpressionUUID->"a273b003-229d-40b3-8350-\
+c4a68cd6bdc8"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "9", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "2.8158953820000003`"}],
+  SequenceForm["The ", 9, " Approx. value is ", 2.8158953820000003`],
+  Editable->False]], "Print",ExpressionUUID->"6d7a768c-ef04-4bdb-afb6-\
+8f761f8bbd80"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "3.1874849202`"}],
+  SequenceForm["The ", 10, " Approx. value is ", 3.1874849202],
+  Editable->False]], "Print",ExpressionUUID->"a1fd7a92-3c22-4f40-8dc7-\
+a68c6f2dc909"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+QUESTION 2 : Solve the Initial value problem dy/dx = x -y^2 , y (0) = 1.0, on \
+(0, 1) using Euler Method.\
+\>", "Item",
+ FontWeight->Plain,ExpressionUUID->"e23bfec6-6524-4700-8d74-eb921173859a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ExactSol", " ", "=", " ", 
+  RowBox[{"DSolve", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"u", "'"}], "[", "t", "]"}], " ", "==", " ", 
+       RowBox[{"t", " ", "+", " ", 
+        RowBox[{"u", "[", "t", "]"}]}]}], ",", " ", 
+      RowBox[{
+       RowBox[{"u", "[", "0", "]"}], " ", "==", " ", "1.0"}]}], "}"}], ",", 
+    " ", 
+    RowBox[{"u", "[", "t", "]"}], ",", " ", "t"}], "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{"f", "[", 
+   RowBox[{"x_", ",", " ", "y_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"x", " ", "-", " ", 
+   RowBox[{"y", "^", "2"}]}]}], "\n", 
+ RowBox[{
+  RowBox[{"n", " ", "=", " ", "10"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"a", " ", "=", " ", "0.0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"b", " ", "=", " ", "1.0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"h", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"b", " ", "-", " ", "a"}], ")"}], " ", "/", " ", "n"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"y", "[", "0", "]"}], " ", "=", " ", "1.0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Int", " ", "=", " ", 
+   RowBox[{"y", "[", "0", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", " ", "=", " ", "0"}], ",", " ", 
+    RowBox[{"i", " ", "\[LessEqual]", " ", 
+     RowBox[{"n", " ", "-", " ", "1"}]}], ",", " ", 
+    RowBox[{"i", "++"}], ",", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"x", "[", "i", "]"}], " ", "=", " ", 
+      RowBox[{"a", " ", "+", " ", 
+       RowBox[{"i", " ", "*", " ", "h"}]}]}], ";", "\n", 
+     RowBox[{
+      RowBox[{"y", "[", "i", "]"}], " ", "=", " ", "Int"}], ";", "\n", 
+     RowBox[{
+      RowBox[{"y", "[", 
+       RowBox[{"i", " ", "+", " ", "1"}], "]"}], " ", "=", " ", 
+      RowBox[{
+       RowBox[{"y", "[", "i", "]"}], " ", "+", " ", 
+       RowBox[{"h", " ", "*", " ", 
+        RowBox[{"f", "[", 
+         RowBox[{
+          RowBox[{"x", "[", "i", "]"}], ",", " ", 
+          RowBox[{"y", "[", "i", "]"}]}], "]"}]}]}]}], ";", "\n", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<The \>\"", ",", " ", 
+       RowBox[{"i", " ", "+", " ", "1"}], ",", " ", 
+       "\"\< Approx. value is \>\"", ",", " ", 
+       RowBox[{"y", "[", 
+        RowBox[{"i", " ", "+", " ", "1"}], "]"}]}], "]"}], ";", "\n", 
+     RowBox[{"Int", " ", "=", " ", 
+      RowBox[{"y", "[", 
+       RowBox[{"i", " ", "+", " ", "1"}], "]"}]}]}]}], "]"}], 
+  ";"}], "\n"}], "Input",
+ CellFrame->1,
+ Background->RGBColor[
+  0.9647058823529412, 0.8901960784313725, 0.8549019607843137, 
+   1],ExpressionUUID->"2cc46b9e-6740-4adb-9ea0-1c1b606d92a7"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"u", "[", "t", "]"}], "\[Rule]", 
+    RowBox[{"2.`", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "0.5`"}], "+", 
+       RowBox[{"1.`", " ", 
+        SuperscriptBox["\[ExponentialE]", "t"]}], "-", 
+       RowBox[{"0.5`", " ", "t"}]}], ")"}]}]}], "}"}], "}"}]], "Output",
+ CellLabel->
+  "Out[121]= ",ExpressionUUID->"8c2edb43-8674-4cae-9215-60de5bf45091"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.9`"}],
+  SequenceForm["The ", 1, " Approx. value is ", 0.9],
+  Editable->False]], "Print",ExpressionUUID->"81da0ff4-ca47-45ce-abe8-\
+1eda3791a36e"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.829`"}],
+  SequenceForm["The ", 2, " Approx. value is ", 0.829],
+  Editable->False]], "Print",ExpressionUUID->"3437acf7-d186-4553-924d-\
+48f6083538df"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.7802758999999999`"}],
+  SequenceForm["The ", 3, " Approx. value is ", 0.7802758999999999],
+  Editable->False]], "Print",ExpressionUUID->"10f2f520-1884-4215-ac3c-\
+4e0496a30324"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.7493928519879189`"}],
+  SequenceForm["The ", 4, " Approx. value is ", 0.7493928519879189],
+  Editable->False]], "Print",ExpressionUUID->"b70ad53c-a983-47e3-9d03-\
+7de643624516"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.7332338873268602`"}],
+  SequenceForm["The ", 5, " Approx. value is ", 0.7332338873268602],
+  Editable->False]], "Print",ExpressionUUID->"a6198974-fb67-4b66-82a7-\
+6804413b15b7"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.7294706939744143`"}],
+  SequenceForm["The ", 6, " Approx. value is ", 0.7294706939744143],
+  Editable->False]], "Print",ExpressionUUID->"f0db8a7f-719b-4e1e-b437-\
+19a0eccc1235"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "7", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.7362579446376629`"}],
+  SequenceForm["The ", 7, " Approx. value is ", 0.7362579446376629],
+  Editable->False]], "Print",ExpressionUUID->"81d70517-50ab-4fe5-8650-\
+a51a4e2982ab"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "8", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.7520503685334553`"}],
+  SequenceForm["The ", 8, " Approx. value is ", 0.7520503685334553],
+  Editable->False]], "Print",ExpressionUUID->"1f934466-ebb7-48f1-af1b-\
+348756ed54c9"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "9", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.7754923928523247`"}],
+  SequenceForm["The ", 9, " Approx. value is ", 0.7754923928523247],
+  Editable->False]], "Print",ExpressionUUID->"dd12403a-4e5a-45d3-874c-\
+633f335eb779"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.8053535477151423`"}],
+  SequenceForm["The ", 10, " Approx. value is ", 0.8053535477151423],
+  Editable->False]], "Print",ExpressionUUID->"7a639d20-19d0-4c5c-bb24-\
+305ee879bd38"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+QUESTION 3The Initial value problem dy/dx = x-12y , y (0) = 1.0, on (0, 1) \
+using Euler Method.\
+\>", "Item",
+ FontWeight->Plain,ExpressionUUID->"a6485870-73f9-48da-99c0-1e4f823f0b8b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ExactSol", " ", "=", " ", 
+  RowBox[{"DSolve", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"u", "'"}], "[", "t", "]"}], " ", "==", " ", 
+       RowBox[{"t", " ", "+", " ", 
+        RowBox[{"u", "[", "t", "]"}]}]}], ",", " ", 
+      RowBox[{
+       RowBox[{"u", "[", "0", "]"}], " ", "==", " ", "1.0"}]}], "}"}], ",", 
+    " ", 
+    RowBox[{"u", "[", "t", "]"}], ",", " ", "t"}], "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{"g", "[", 
+   RowBox[{"x_", ",", " ", "y_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"x", "-", 
+   RowBox[{"12", "y"}]}]}], "\n", 
+ RowBox[{
+  RowBox[{"n", " ", "=", " ", "10"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"a", " ", "=", " ", "0.0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"b", " ", "=", " ", "1.0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"h", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"b", " ", "-", " ", "a"}], ")"}], " ", "/", " ", "n"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"y", "[", "0", "]"}], " ", "=", " ", "1.0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Int", " ", "=", " ", 
+   RowBox[{"y", "[", "0", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", " ", "=", " ", "0"}], ",", " ", 
+    RowBox[{"i", " ", "\[LessEqual]", " ", 
+     RowBox[{"n", " ", "-", " ", "1"}]}], ",", " ", 
+    RowBox[{"i", "++"}], ",", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"x", "[", "i", "]"}], " ", "=", " ", 
+      RowBox[{"a", " ", "+", " ", 
+       RowBox[{"i", " ", "*", " ", "h"}]}]}], ";", "\n", 
+     RowBox[{
+      RowBox[{"y", "[", "i", "]"}], " ", "=", " ", "Int"}], ";", "\n", 
+     RowBox[{
+      RowBox[{"y", "[", 
+       RowBox[{"i", " ", "+", " ", "1"}], "]"}], " ", "=", " ", 
+      RowBox[{
+       RowBox[{"y", "[", "i", "]"}], " ", "+", " ", 
+       RowBox[{"h", " ", "*", " ", 
+        RowBox[{"g", "[", 
+         RowBox[{
+          RowBox[{"x", "[", "i", "]"}], ",", " ", 
+          RowBox[{"y", "[", "i", "]"}]}], "]"}]}]}]}], ";", "\n", 
+     RowBox[{"Print", "[", 
+      RowBox[{"\"\<The \>\"", ",", " ", 
+       RowBox[{"i", " ", "+", " ", "1"}], ",", " ", 
+       "\"\< Approx. value is \>\"", ",", " ", 
+       RowBox[{"y", "[", 
+        RowBox[{"i", " ", "+", " ", "1"}], "]"}]}], "]"}], ";", "\n", 
+     RowBox[{"Int", " ", "=", " ", 
+      RowBox[{"y", "[", 
+       RowBox[{"i", " ", "+", " ", "1"}], "]"}]}]}]}], "]"}], 
+  ";"}], "\n"}], "Input",
+ CellFrame->1,
+ Background->RGBColor[
+  0.9450980392156862, 0.8588235294117647, 0.8, 
+   1],ExpressionUUID->"596d56ec-b2db-4647-bb79-91ba50aefe75"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"u", "[", "t", "]"}], "\[Rule]", 
+    RowBox[{"2.`", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "0.5`"}], "+", 
+       RowBox[{"1.`", " ", 
+        SuperscriptBox["\[ExponentialE]", "t"]}], "-", 
+       RowBox[{"0.5`", " ", "t"}]}], ")"}]}]}], "}"}], "}"}]], "Output",
+ CellLabel->
+  "Out[139]= ",ExpressionUUID->"5066f0de-43a8-484a-bf7b-cee530971934"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "0.20000000000000018`"}]}],
+  SequenceForm["The ", 1, " Approx. value is ", -0.20000000000000018`],
+  Editable->False]], "Print",ExpressionUUID->"ed67b223-1712-4b1a-ba7e-\
+0d80b0d7a7a4"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.050000000000000044`"}],
+  SequenceForm["The ", 2, " Approx. value is ", 0.050000000000000044`],
+  Editable->False]], "Print",ExpressionUUID->"30dbb13d-d7a9-4c72-9d0d-\
+6cf1d69c3010"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.009999999999999988`"}],
+  SequenceForm["The ", 3, " Approx. value is ", 0.009999999999999988],
+  Editable->False]], "Print",ExpressionUUID->"f8e592fd-7f53-4ab8-9ebd-\
+959e41ea7389"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.028000000000000008`"}],
+  SequenceForm["The ", 4, " Approx. value is ", 0.028000000000000008`],
+  Editable->False]], "Print",ExpressionUUID->"16cbeb9f-96f5-46a3-9841-\
+6dafc76e4e74"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.0344`"}],
+  SequenceForm["The ", 5, " Approx. value is ", 0.0344],
+  Editable->False]], "Print",ExpressionUUID->"08de7a68-32b1-4954-87b7-\
+8a81d76e2f49"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.04312`"}],
+  SequenceForm["The ", 6, " Approx. value is ", 0.04312],
+  Editable->False]], "Print",ExpressionUUID->"0e1a2a73-9959-4cac-ab2a-\
+867aa3693993"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "7", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.051376000000000005`"}],
+  SequenceForm["The ", 7, " Approx. value is ", 0.051376000000000005`],
+  Editable->False]], "Print",ExpressionUUID->"2d3ba097-1211-4ce6-9205-\
+55c9a29f4ba4"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "8", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.05972480000000001`"}],
+  SequenceForm["The ", 8, " Approx. value is ", 0.05972480000000001],
+  Editable->False]], "Print",ExpressionUUID->"fab33d16-9266-4c2e-bdde-\
+7dc58d231c81"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "9", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.06805504000000001`"}],
+  SequenceForm["The ", 9, " Approx. value is ", 0.06805504000000001],
+  Editable->False]], "Print",ExpressionUUID->"0810ef64-2e14-4a0f-bde3-\
+87b429303fc8"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The \"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\" Approx. value is \"\>", "\[InvisibleSpace]", 
+   "0.076388992`"}],
+  SequenceForm["The ", 10, " Approx. value is ", 0.076388992],
+  Editable->False]], "Print",ExpressionUUID->"f41d4223-b54e-4d8e-a44d-\
+01c935b11239"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{581.25, 654.},
+WindowMargins->{{423, Automatic}, {Automatic, 40.5}},
+FrontEndVersion->"13.2 for Microsoft Windows (64-bit) (January 30, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"0fe51041-8908-4c16-859d-37523981676c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 198, 4, 32, "Item",ExpressionUUID->"1204a7bb-e413-40e3-ac94-d950542dbc45"],
+Cell[759, 26, 244, 8, 43, "Item",ExpressionUUID->"68f1d8e7-5a61-4c2c-9c54-1421e1be30a1"],
+Cell[CellGroupData[{
+Cell[1028, 38, 204, 4, 53, "Item",ExpressionUUID->"d9b0b4a4-451f-4544-b02f-ce4d6ab3fa8c"],
+Cell[CellGroupData[{
+Cell[1257, 46, 2592, 74, 275, "Input",ExpressionUUID->"d58a0cfa-6075-4e29-acbd-9ce01ab291f8"],
+Cell[3852, 122, 433, 12, 35, "Output",ExpressionUUID->"707c51e3-7fec-4d68-b381-2eb53207de52"],
+Cell[CellGroupData[{
+Cell[4310, 138, 316, 7, 22, "Print",ExpressionUUID->"d0e020ca-9568-4701-b9e7-b858d2295985"],
+Cell[4629, 147, 347, 7, 22, "Print",ExpressionUUID->"06ff9350-b67b-4ace-95b8-10344e302c87"],
+Cell[4979, 156, 320, 7, 22, "Print",ExpressionUUID->"98f51a43-cabc-4f45-86fc-e1a1bc5f7a3a"],
+Cell[5302, 165, 322, 7, 22, "Print",ExpressionUUID->"74fb7d9c-e277-42d5-87b0-282360eb71f3"],
+Cell[5627, 174, 324, 7, 22, "Print",ExpressionUUID->"6bb5a4f8-673c-4537-81b7-0df213af1c62"],
+Cell[5954, 183, 326, 7, 22, "Print",ExpressionUUID->"d25a2c9a-5052-4acb-989b-fedc2282a197"],
+Cell[6283, 192, 328, 7, 22, "Print",ExpressionUUID->"01d843b5-d105-455e-b4fa-6d61e9c16f26"],
+Cell[6614, 201, 330, 7, 22, "Print",ExpressionUUID->"a273b003-229d-40b3-8350-c4a68cd6bdc8"],
+Cell[6947, 210, 347, 7, 22, "Print",ExpressionUUID->"6d7a768c-ef04-4bdb-afb6-8f761f8bbd80"],
+Cell[7297, 219, 336, 7, 22, "Print",ExpressionUUID->"a1fd7a92-3c22-4f40-8dc7-a68c6f2dc909"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7694, 233, 205, 4, 70, "Item",ExpressionUUID->"e23bfec6-6524-4700-8d74-eb921173859a"],
+Cell[CellGroupData[{
+Cell[7924, 241, 2600, 75, 70, "Input",ExpressionUUID->"2cc46b9e-6740-4adb-9ea0-1c1b606d92a7"],
+Cell[10527, 318, 438, 13, 70, "Output",ExpressionUUID->"8c2edb43-8674-4cae-9215-60de5bf45091"],
+Cell[CellGroupData[{
+Cell[10990, 335, 316, 7, 70, "Print",ExpressionUUID->"81da0ff4-ca47-45ce-abe8-1eda3791a36e"],
+Cell[11309, 344, 320, 7, 70, "Print",ExpressionUUID->"3437acf7-d186-4553-924d-48f6083538df"],
+Cell[11632, 353, 346, 7, 70, "Print",ExpressionUUID->"10f2f520-1884-4215-ac3c-4e0496a30324"],
+Cell[11981, 362, 346, 7, 70, "Print",ExpressionUUID->"b70ad53c-a983-47e3-9d03-7de643624516"],
+Cell[12330, 371, 346, 7, 70, "Print",ExpressionUUID->"a6198974-fb67-4b66-82a7-6804413b15b7"],
+Cell[12679, 380, 346, 7, 70, "Print",ExpressionUUID->"f0db8a7f-719b-4e1e-b437-19a0eccc1235"],
+Cell[13028, 389, 346, 7, 70, "Print",ExpressionUUID->"81d70517-50ab-4fe5-8650-a51a4e2982ab"],
+Cell[13377, 398, 346, 7, 70, "Print",ExpressionUUID->"1f934466-ebb7-48f1-af1b-348756ed54c9"],
+Cell[13726, 407, 346, 7, 70, "Print",ExpressionUUID->"dd12403a-4e5a-45d3-874c-633f335eb779"],
+Cell[14075, 416, 348, 7, 70, "Print",ExpressionUUID->"7a639d20-19d0-4c5c-bb24-305ee879bd38"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14484, 430, 195, 4, 70, "Item",ExpressionUUID->"a6485870-73f9-48da-99c0-1e4f823f0b8b"],
+Cell[CellGroupData[{
+Cell[14704, 438, 2571, 75, 70, "Input",ExpressionUUID->"596d56ec-b2db-4647-bb79-91ba50aefe75"],
+Cell[17278, 515, 438, 13, 70, "Output",ExpressionUUID->"5066f0de-43a8-484a-bf7b-cee530971934"],
+Cell[CellGroupData[{
+Cell[17741, 532, 365, 7, 70, "Print",ExpressionUUID->"ed67b223-1712-4b1a-ba7e-0d80b0d7a7a4"],
+Cell[18109, 541, 351, 7, 70, "Print",ExpressionUUID->"30dbb13d-d7a9-4c72-9d0d-6cf1d69c3010"],
+Cell[18463, 550, 350, 7, 70, "Print",ExpressionUUID->"f8e592fd-7f53-4ab8-9ebd-959e41ea7389"],
+Cell[18816, 559, 351, 7, 70, "Print",ExpressionUUID->"16cbeb9f-96f5-46a3-9841-6dafc76e4e74"],
+Cell[19170, 568, 322, 7, 70, "Print",ExpressionUUID->"08de7a68-32b1-4954-87b7-8a81d76e2f49"],
+Cell[19495, 577, 324, 7, 70, "Print",ExpressionUUID->"0e1a2a73-9959-4cac-ab2a-867aa3693993"],
+Cell[19822, 586, 351, 7, 70, "Print",ExpressionUUID->"2d3ba097-1211-4ce6-9205-55c9a29f4ba4"],
+Cell[20176, 595, 348, 7, 70, "Print",ExpressionUUID->"fab33d16-9266-4c2e-bdde-7dc58d231c81"],
+Cell[20527, 604, 348, 7, 70, "Print",ExpressionUUID->"0810ef64-2e14-4a0f-bde3-87b429303fc8"],
+Cell[20878, 613, 334, 7, 70, "Print",ExpressionUUID->"f41d4223-b54e-4d8e-a44d-01c935b11239"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
